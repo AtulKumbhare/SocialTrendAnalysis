@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" x="0" y="0" viewBox="0 0 24 24">
+  <style>.st2{fill:#000048}</style>
+  <defs>
+    <path id="SVGID_1_" d="M59.2 2.7h186.7v40.8H59.2z"/>
+  </defs>
+  <defs>
+    <path id="SVGID_00000085213138245146219190000008599264730915323836_" d="M0 0h52.1v44H0z"/>
+  </defs>
+  <clipPath id="SVGID_00000023275576737302775000000017739223560985338244_">
+    <path d="M0 0h52.1v44H0z" overflow="visible"/>
+  </clipPath>
+  <g clip-path="url(#SVGID_00000023275576737302775000000017739223560985338244_)" transform="matrix(0.460653, 0, 0, 0.460653, 0, 1.918605)" style="">
+    <defs>
+      <path id="SVGID_00000050660665550895142240000014880732468509939883_" d="m0 22 15.3 22 15.8-9.5L22.2 22z"/>
+    </defs>
+    <clipPath id="SVGID_00000135667248469030152890000000337272502332585655_">
+      <path d="m0 22 15.3 22 15.8-9.5L22.2 22z" overflow="visible"/>
+    </clipPath>
+    <g clip-path="url(#SVGID_00000135667248469030152890000000337272502332585655_)">
+      <linearGradient id="SVGID_00000182500455220199611780000011285939690309641648_" gradientUnits="userSpaceOnUse" x1="-391.039" y1="277.815" x2="-390.039" y2="277.815" gradientTransform="matrix(31.1065 0 0 -21.9795 12163.862 6139.21)">
+        <stop offset="0" stop-color="#3d54ce"/>
+        <stop offset="1" stop-color="#35cacf"/>
+      </linearGradient>
+      <path fill="url(#SVGID_00000182500455220199611780000011285939690309641648_)" d="M0 22h31.1v22H0z"/>
+    </g>
+    <defs>
+      <path id="SVGID_00000114070949333990582630000017270483092055787688_" d="M15.3 44h21.8l15-22z"/>
+    </defs>
+    <clipPath id="SVGID_00000092426726985261628360000008018755475207643524_">
+      <path d="M15.3 44h21.8l15-22z" overflow="visible"/>
+    </clipPath>
+    <g clip-path="url(#SVGID_00000092426726985261628360000008018755475207643524_)">
+      <linearGradient id="SVGID_00000029744234580894563620000004719264263002787256_" gradientUnits="userSpaceOnUse" x1="-393.062" y1="277.815" x2="-392.062" y2="277.815" gradientTransform="matrix(36.8476 0 0 -21.9795 14498.684 6139.21)">
+        <stop offset="0" stop-color="#13457d"/>
+        <stop offset="1" stop-color="#279698"/>
+      </linearGradient>
+      <path fill="url(#SVGID_00000029744234580894563620000004719264263002787256_)" d="M15.3 22h36.8v22H15.3z"/>
+    </g>
+    <defs>
+      <path id="SVGID_00000124156495544010432790000012960116144518489730_" d="M15.3 0 0 22h22.2l8.9-12.5z"/>
+    </defs>
+    <clipPath id="SVGID_00000029046943914045948290000010502153975593422010_">
+      <path d="M15.3 0 0 22h22.2l8.9-12.5z" overflow="visible"/>
+    </clipPath>
+    <g clip-path="url(#SVGID_00000029046943914045948290000010502153975593422010_)">
+      <linearGradient id="SVGID_00000031913817338843176650000007177461719868006072_" gradientUnits="userSpaceOnUse" x1="-391.049" y1="277.815" x2="-390.049" y2="277.815" gradientTransform="matrix(31.1316 0 0 -21.9796 12173.976 6117.246)">
+        <stop offset="0" stop-color="#090086"/>
+        <stop offset="1" stop-color="#2f96a9"/>
+      </linearGradient>
+      <path fill="url(#SVGID_00000031913817338843176650000007177461719868006072_)" d="M0 0h31.1v22H0z"/>
+    </g>
+    <defs>
+      <path id="SVGID_00000147909067435365521700000017294411540867699616_" d="m15.3 0 36.8 22-15-22z"/>
+    </defs>
+    <clipPath id="SVGID_00000078011445600416747300000013195656224370321068_">
+      <path d="m15.3 0 36.8 22-15-22z" overflow="visible"/>
+    </clipPath>
+    <g clip-path="url(#SVGID_00000078011445600416747300000013195656224370321068_)">
+      <linearGradient id="SVGID_00000128475501832932076910000005979470219009375159_" gradientUnits="userSpaceOnUse" x1="-393.062" y1="277.815" x2="-392.062" y2="277.815" gradientTransform="matrix(36.8476 0 0 -21.9796 14498.684 6117.246)">
+        <stop offset="0" stop-color="#3b62ca"/>
+        <stop offset="1" stop-color="#93dfe3"/>
+      </linearGradient>
+      <path fill="url(#SVGID_00000128475501832932076910000005979470219009375159_)" d="M15.3 0h36.8v22H15.3z"/>
+    </g>
+  </g>
+</svg>

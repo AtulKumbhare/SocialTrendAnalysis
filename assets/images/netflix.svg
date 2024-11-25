@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<svg id="Netflix_Symbol_RGB" viewBox="0 0 24 24" version="1.1" width="24px" height="24px" xmlns="http://www.w3.org/2000/svg">
+  <defs id="defs4">
+    <linearGradient id="linearGradient35887">
+      <stop style="stop-color:#b1060f;stop-opacity:1;" offset="0" id="stop35883"/>
+      <stop style="stop-color:#7b010c;stop-opacity:1" offset="0.625" id="stop36053"/>
+      <stop style="stop-color:#b1060f;stop-opacity:0;" offset="1" id="stop35885"/>
+    </linearGradient>
+    <linearGradient id="linearGradient19332">
+      <stop style="stop-color:#b1060f;stop-opacity:1" offset="0" id="stop19328"/>
+      <stop style="stop-color:#7b010c;stop-opacity:1" offset="0.5461" id="stop19560"/>
+      <stop style="stop-color:#e50914;stop-opacity:0;" offset="1" id="stop19330"/>
+    </linearGradient>
+    <style id="style2">.cls-1{fill:#e50914;}</style>
+    <linearGradient id="linearGradient13368" x1="78.23394" y1="423.76712" x2="221.66281" y2="365.09167" gradientUnits="userSpaceOnUse" href="#linearGradient19332" gradientTransform="matrix(0.023908, 0, 0, 0.023908, 5.373064, 0.027555)"/>
+    <linearGradient id="linearGradient35889" x1="456.36462" y1="521.55957" x2="309.67599" y2="583.49475" gradientUnits="userSpaceOnUse" href="#linearGradient35887" gradientTransform="matrix(0.023908, 0, 0, 0.023908, 5.373064, 0.027555)"/>
+  </defs>
+  <path style="fill: url(&quot;#linearGradient13368&quot;); stroke: none; stroke-width: 1px; stroke-linecap: butt; stroke-linejoin: miter; stroke-opacity: 1; fill-opacity: 1;" d="M 5.345 0 L 5.428 24 C 7.179 23.663 8.557 23.7 10.112 23.559 L 10.112 0.027 L 5.345 0 Z" id="path6055"/>
+  <path style="fill: url(&quot;#linearGradient35889&quot;); stroke: none; stroke-width: 1px; stroke-linecap: butt; stroke-linejoin: miter; stroke-opacity: 1; fill-opacity: 1;" d="M 13.832 0.027 L 18.599 0.027 L 18.654 23.945 L 13.804 23.146 L 13.832 0.027 Z" id="path678"/>
+  <path style="fill: rgb(229, 9, 20); fill-opacity: 1; stroke: none; stroke-width: 1px; stroke-linecap: butt; stroke-linejoin: miter; stroke-opacity: 1;" d="M 5.4 0.027 C 5.51 0.303 13.667 23.504 13.667 23.504 C 15.007 23.495 16.804 23.713 18.571 23.917 L 10.084 0.027 L 5.4 0.027 Z" id="path362"/>
+</svg>
