@@ -4,11 +4,7 @@ import { LineChart as GiftedLineChart } from "react-native-gifted-charts";
 import { LineChart } from "react-native-chart-kit";
 import { Dropdown } from "react-native-element-dropdown";
 
-import { DataTable, Divider, IconButton } from "react-native-paper";
-
-import ParallaxScrollView from "@/components/ParallaxScrollView";
-import { ThemedText } from "@/components/ThemedText";
-import { ThemedView } from "@/components/ThemedView";
+import { DataTable, Divider } from "react-native-paper";
 import { Card } from "react-native-paper";
 import Popover, { PopoverPlacement } from "react-native-popover-view";
 

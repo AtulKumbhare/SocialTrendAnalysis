@@ -18,7 +18,7 @@ export default function TabLayout() {
         tabBarActiveTintColor: "#232b5d",
         headerShown: false,
         tabBarStyle: {
-          height: 65,
+          height: Platform.OS === "ios" ? 78 : 65,
           paddingTop: 10,
         },
       }}
