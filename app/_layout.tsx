@@ -42,22 +42,24 @@ export default function RootLayout() {
   return (
     <ThemeProvider value={colorScheme === "dark" ? DarkTheme : DefaultTheme}>
       <SafeAreaProvider>
-        <SafeAreaView
-          style={{
-            flex: 1,
-            backgroundColor: Platform.OS === "ios" ? Colors.light.tint : "",
-          }}
+        <LinearGradient
+          colors={["#232b5d", "#233b9d"]}
+          start={{ x: 0, y: 0 }} // Start from the left
+          end={{ x: 1, y: 0 }} // End at the right
+          style={{ flex: 1 }}
         >
-          <StatusBar
-            style="light"
-            animated={true}
-            backgroundColor={"#232b5d"}
-          />
-          <Stack>
-            <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
-            <Stack.Screen name="+not-found" />
-          </Stack>
-        </SafeAreaView>
+          <SafeAreaView
+            style={{
+              flex: 1,
+            }}
+          >
+            <StatusBar style="light" animated={true} />
+            <Stack>
+              <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
+              <Stack.Screen name="+not-found" />
+            </Stack>
+          </SafeAreaView>
+        </LinearGradient>
       </SafeAreaProvider>
     </ThemeProvider>
   );
