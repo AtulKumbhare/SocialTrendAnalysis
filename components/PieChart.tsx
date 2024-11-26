@@ -1,4 +1,5 @@
-import { Text, View } from "react-native";
+import { LinearGradient } from "expo-linear-gradient";
+import { Platform, Text, View } from "react-native";
 import { PieChart as GiftedPieChart } from "react-native-gifted-charts";
 
 const PieChart = () => {
@@ -94,54 +95,64 @@ const PieChart = () => {
         flex: 1,
       }}
     >
-      <View
+      <LinearGradient
+        colors={["#232b5d", "#233b9d"]}
+        start={{ x: 0, y: 0 }} // Start from the left
+        end={{ x: 1, y: 0 }} // End at the right
         style={{
-          padding: 16,
-          // borderRadius: 20,
-          backgroundColor: "#232B5D",
+          borderRadius: Platform.OS == "web" ? 0 : 20,
+          borderTopLeftRadius: 0,
+          borderTopRightRadius: 0,
+          paddingBottom: 20,
         }}
       >
-        <Text
+        <View
           style={{
-            color: "white",
-            fontSize: 22,
-            fontWeight: "bold",
-            textAlign: "center",
+            paddingTop: 16,
           }}
         >
-          Portfolio
-        </Text>
-        <View style={{ padding: 20, alignItems: "center" }}>
-          <GiftedPieChart
-            data={pieData}
-            donut
-            showGradient
-            sectionAutoFocus
-            radius={100}
-            innerRadius={50}
-            innerCircleColor={"#232B5D"}
-            isAnimated={true}
-            showTooltip
-            // centerLabelComponent={() => {
-            //   return (
-            //     <View
-            //       style={{ justifyContent: "center", alignItems: "center" }}
-            //     >
-            //       <Text
-            //         style={{ fontSize: 22, color: "white", fontWeight: "bold" }}
-            //       >
-            //         47%
-            //       </Text>
-            //       <Text style={{ fontSize: 14, color: "white" }}>
-            //         Excellent
-            //       </Text>
-            //     </View>
-            //   );
-            // }}
-          />
+          <Text
+            style={{
+              color: "white",
+              fontSize: 22,
+              fontWeight: "bold",
+              textAlign: "center",
+            }}
+          >
+            Portfolio
+          </Text>
+          <View style={{ padding: 20, alignItems: "center" }}>
+            <GiftedPieChart
+              data={pieData}
+              donut
+              showGradient
+              sectionAutoFocus
+              radius={100}
+              innerRadius={50}
+              innerCircleColor={"#232B5D"}
+              isAnimated={true}
+              showTooltip
+              // centerLabelComponent={() => {
+              //   return (
+              //     <View
+              //       style={{ justifyContent: "center", alignItems: "center" }}
+              //     >
+              //       <Text
+              //         style={{ fontSize: 22, color: "white", fontWeight: "bold" }}
+              //       >
+              //         47%
+              //       </Text>
+              //       <Text style={{ fontSize: 14, color: "white" }}>
+              //         Excellent
+              //       </Text>
+              //     </View>
+              //   );
+              // }}
+            />
+          </View>
+          {renderLegendComponent()}
         </View>
-        {renderLegendComponent()}
-      </View>
+      </LinearGradient>
     </View>
   );
 };

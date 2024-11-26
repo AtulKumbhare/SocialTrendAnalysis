@@ -16,6 +16,7 @@ import "../global.css";
 import { StatusBar } from "expo-status-bar";
 import { Colors } from "@/constants/Colors";
 import { Platform } from "react-native";
+import { LinearGradient } from "expo-linear-gradient";
 
 // Prevent the splash screen from auto-hiding before asset loading is complete.
 SplashScreen.preventAutoHideAsync();
@@ -44,11 +45,14 @@ export default function RootLayout() {
         <SafeAreaView
           style={{
             flex: 1,
-            backgroundColor:
-              Platform.OS === "ios" ? Colors.light.tint : '',
+            backgroundColor: Platform.OS === "ios" ? Colors.light.tint : "",
           }}
         >
-          <StatusBar style="light"  animated={true}  backgroundColor={"#232b5d"}  />
+          <StatusBar
+            style="light"
+            animated={true}
+            backgroundColor={"#232b5d"}
+          />
           <Stack>
             <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
             <Stack.Screen name="+not-found" />

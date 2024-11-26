@@ -297,30 +297,33 @@ export default function HomeScreen() {
     <Animated.ScrollView ref={scrollRef} scrollEventThrottle={16}>
       <View>
         {Platform.OS === "web" && (
-          <View
-            className="flex flex-row items-center"
-            style={{ backgroundColor: Colors.light.tint }}
+          <LinearGradient
+            colors={["#232b5d", "#233b9d"]}
+            start={{ x: 0, y: 0 }} // Start from the left
+            end={{ x: 1, y: 0 }} // End at the right
           >
-            <Text className="flex-1 text-[18px] font-bold text-center py-4 text-white">
-              Portfolio Summery
-            </Text>
-            <Popover
-              placement={PopoverPlacement.LEFT}
-              popoverStyle={{borderRadius: 14, width: 400}}
-              from={
-                <TouchableOpacity>
-                  <Ionicons
-                    className="mr-2"
-                    name={"notifications-sharp"}
-                    color={"#fff"}
-                    size={24}
-                  />
-                </TouchableOpacity>
-              }
-            >
-              <Notifications />
-            </Popover>
-          </View>
+            <View className="flex flex-row items-center">
+              <Text className="flex-1 text-[18px] font-bold text-center py-4 text-white">
+                Portfolio Summery
+              </Text>
+              <Popover
+                placement={PopoverPlacement.LEFT}
+                popoverStyle={{ borderRadius: 14, width: 400 }}
+                from={
+                  <TouchableOpacity>
+                    <Ionicons
+                      className="mr-2"
+                      name={"notifications-sharp"}
+                      color={"#fff"}
+                      size={24}
+                    />
+                  </TouchableOpacity>
+                }
+              >
+                <Notifications />
+              </Popover>
+            </View>
+          </LinearGradient>
         )}
         <View>
           {/* <View className="p-4" style={styles.titleContainer}>
@@ -454,13 +457,25 @@ export default function HomeScreen() {
               </LinearGradient>
             </Card>
           </View> */}
-          <View className="p-4" style={styles.titleContainer}>
-            <Card>
+          <View
+            className={Platform.OS == "web" ? "p-4" : ""}
+            style={styles.titleContainer}
+          >
+            <Card
+              style={{
+                borderRadius: Platform.OS == "web" ? 12 : 20,
+              }}
+            >
               <LinearGradient
                 colors={["#232b5d", "#233b9d"]}
                 start={{ x: 0, y: 0 }} // Start from the left
                 end={{ x: 1, y: 0 }} // End at the right
-                style={{ borderRadius: 12, paddingBottom: 20 }}
+                style={{
+                  borderRadius: Platform.OS == "web" ? 12 : 20,
+                  borderTopLeftRadius: Platform.OS == "web" ? 12 : 0,
+                  borderTopRightRadius: Platform.OS == "web" ? 12 : 0,
+                  paddingBottom: 20,
+                }}
               >
                 {Platform.OS !== "web" && (
                   <View className="px-5 py-2" style={styles.titleContainer}>
@@ -494,9 +509,11 @@ export default function HomeScreen() {
                 </View>
                 <Card.Content
                   style={{
-                    paddingHorizontal: 0,
+                    paddingHorizontal: 20,
                     paddingVertical: 0,
                     marginLeft: 0,
+                    borderTopLeftRadius: 0,
+                    borderTopRightRadius: 0,
                   }}
                 >
                   <LineChart

@@ -32,32 +32,41 @@ const Stocks = () => {
       headerTitleStyle: { color: "#fff", fontWeight: "bold" },
       header: (props: any) => {
         return (
-          <View
-            className="px-4 p-6 flex flex-row items-center"
-            style={{ backgroundColor: Colors.light.tint }}
+          <LinearGradient
+            colors={["#232b5d", "#233b9d"]}
+            start={{ x: 0, y: 0 }} // Start from the left
+            end={{ x: 1, y: 0 }} // End at the right
           >
-            <Ionicons
-              name={"arrow-back-circle-outline"}
-              size={30}
-              color={"#fff"}
-              onPress={() => navigation.goBack()}
-            />
-            <View
-              style={{
-                display: "flex",
-                flexGrow: 1,
-                justifyContent: "center",
-                alignItems: "center",
-              }}
-            >
-              <Text
-                style={{ color: "#fff", fontWeight: "bold" }}
-                className="text-center font-bold text-white text-[20px]"
+            <View className="px-4 p-4 flex flex-row items-center">
+              <Ionicons
+                name={
+                  Platform.OS == "web"
+                    ? "arrow-back-circle-outline"
+                    : Platform.OS === "android"
+                    ? "arrow-back"
+                    : "chevron-back"
+                }
+                size={30}
+                color={"#fff"}
+                onPress={() => navigation.goBack()}
+              />
+              <View
+                style={{
+                  display: "flex",
+                  flexGrow: 1,
+                  justifyContent: "center",
+                  alignItems: "center",
+                }}
               >
-                {id}
-              </Text>
+                <Text
+                  style={{ color: "#fff", fontWeight: "bold" }}
+                  className="text-center font-bold text-white text-[20px]"
+                >
+                  {id}
+                </Text>
+              </View>
             </View>
-          </View>
+          </LinearGradient>
         );
       },
     });
@@ -98,13 +107,17 @@ const Stocks = () => {
 
   return (
     <Animated.ScrollView ref={scrollRef} scrollEventThrottle={16}>
-      <View className="p-4">
+      <View className={Platform.OS == "web" ? "p-4" : ""}>
         <Card style={{ backgroundColor: "transparent" }}>
           <LinearGradient
             colors={["#232b5d", "#233b9d"]}
             start={{ x: 0, y: 0 }} // Start from the left
             end={{ x: 1, y: 0 }} // End at the right
-            style={{ borderRadius: 12 }}
+            style={{
+              borderRadius: Platform.OS == "web" ? 12 : 20,
+              borderTopLeftRadius: Platform.OS == "web" ? 12 : 0,
+              borderTopRightRadius: Platform.OS == "web" ? 12 : 0,
+            }}
           >
             <Text
               style={{
@@ -118,7 +131,13 @@ const Stocks = () => {
             >
               Stocks
             </Text>
-            <Card.Content style={Platform.OS === "web" ? {} : { paddingRight: 0, paddingLeft: 25 }}>
+            <Card.Content
+              style={
+                Platform.OS === "web"
+                  ? {}
+                  : { paddingRight: 0, paddingLeft: 25 }
+              }
+            >
               <LineChart />
             </Card.Content>
             <View
@@ -143,7 +162,7 @@ const Stocks = () => {
       </View>
       <View className="p-4">
         <Card>
-            <Card.Content style={{ paddingHorizontal: 0, paddingVertical: 0 }}>
+          <Card.Content style={{ paddingHorizontal: 0, paddingVertical: 0 }}>
             <List.Item
               title="Amazon"
               description="AMZN"
@@ -159,10 +178,7 @@ const Stocks = () => {
                 fontSize: 12,
               }}
               left={(props) => (
-                <Image
-                  style={{ width: 30, height: 30 }}
-                  source={AmazonImage}
-                />
+                <Image style={{ width: 30, height: 30 }} source={AmazonImage} />
               )}
               right={(props) => renderBadge(-0.25)}
             />
@@ -205,10 +221,7 @@ const Stocks = () => {
                 fontSize: 12,
               }}
               left={(props) => (
-                <Image
-                  style={{ width: 30, height: 30 }}
-                  source={GoogleImage}
-                />
+                <Image style={{ width: 30, height: 30 }} source={GoogleImage} />
               )}
               right={(props) => renderBadge(-0.75)}
             />

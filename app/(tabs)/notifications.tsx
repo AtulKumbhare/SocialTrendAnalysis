@@ -3,6 +3,7 @@ import { Divider, IconButton, List, MD3Colors } from "react-native-paper";
 import Ionicons from "@expo/vector-icons/Ionicons";
 import { format, differenceInDays, differenceInHours, parse } from "date-fns";
 import { Colors } from "@/constants/Colors";
+import { LinearGradient } from "expo-linear-gradient";
 
 const getDateString = (dateString: string) => {
   const date = parse(dateString, "MM/dd/yy HH:mm:ss", new Date());
@@ -79,17 +80,23 @@ const notificationData: notificationType = [
 const Notifications = () => {
   return (
     <View>
-      <View
-        style={{ backgroundColor: Platform.OS !== "web" ? "rgb(35, 43, 93)" : '' }}
+      <LinearGradient
+        colors={
+          Platform.OS !== "web" ? ["#232b5d", "#233b9d"] : ["#fff", "#fff"]
+        }
+        start={{ x: 0, y: 0 }} // Start from the left
+        end={{ x: 1, y: 0 }} // End at the right
       >
-        <Text
-          className={`${Platform.OS === "web" ? 'p-4' : 'p-7'} text-[18px] ${
-            Platform.OS !== "web" && "text-white"
-          } font-bold text-center`}
-        >
-          Notifications
-        </Text>
-      </View>
+        <View>
+          <Text
+            className={`p-4 text-[18px] ${
+              Platform.OS !== "web" && "text-white"
+            } font-bold text-center`}
+          >
+            Notifications
+          </Text>
+        </View>
+      </LinearGradient>
       {Platform.OS === "web" && (
         <Divider style={{ backgroundColor: "#e3e3e3" }} />
       )}

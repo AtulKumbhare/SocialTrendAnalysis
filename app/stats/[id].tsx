@@ -1,7 +1,7 @@
 import { Colors } from "@/constants/Colors";
 import { Link, useLocalSearchParams, useNavigation } from "expo-router";
 import { useEffect } from "react";
-import { Text, View } from "react-native";
+import { Platform, Text, View } from "react-native";
 import { Divider, IconButton } from "react-native-paper";
 import Animated, {
   useAnimatedRef,
@@ -9,6 +9,7 @@ import Animated, {
 } from "react-native-reanimated";
 import { List } from "react-native-paper";
 import { Ionicons } from "@expo/vector-icons";
+import { LinearGradient } from "expo-linear-gradient";
 
 const Stats = () => {
   const { id } = useLocalSearchParams();
@@ -24,20 +25,29 @@ const Stats = () => {
       headerTitleStyle: { color: "#fff", fontWeight: "bold" },
       header: (props: any) => {
         return (
-          <View
-            className="px-4 p-6 flex flex-row items-center"
-            style={{ backgroundColor: Colors.light.tint }}
+          <LinearGradient
+            colors={["#232b5d", "#233b9d"]}
+            start={{ x: 0, y: 0 }} // Start from the left
+            end={{ x: 1, y: 0 }} // End at the right
           >
-            <Ionicons
-              name={"arrow-back-circle-outline"}
-              size={30}
-              color={"#fff"}
-              onPress={() => navigation.goBack()}
-            />
-            <Text className="text-center flex-1 font-bold text-white text-[20px]">
-              {id}
-            </Text>
-          </View>
+            <View className="px-4 p-4 flex flex-row items-center">
+              <Ionicons
+                name={
+                  Platform.OS == "web"
+                    ? "arrow-back-circle-outline"
+                    : Platform.OS === "android"
+                    ? "arrow-back"
+                    : "chevron-back"
+                }
+                size={30}
+                color={"#fff"}
+                onPress={() => navigation.goBack()}
+              />
+              <Text className="text-center flex-1 font-bold text-white text-[20px]">
+                {id}
+              </Text>
+            </View>
+          </LinearGradient>
         );
       },
     });
