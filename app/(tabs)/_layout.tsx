@@ -20,6 +20,8 @@ export default function TabLayout() {
         tabBarStyle: {
           height: Platform.OS === "ios" ? 78 : 65,
           paddingTop: 10,
+          // backgroundColor: "#232b5d",
+          borderTopLeftRadius: 20,
         },
       }}
     >
@@ -72,9 +74,34 @@ export default function TabLayout() {
         }}
       />
       <Tabs.Screen
+        name="shorts"
+        options={{
+          // href: Platform.OS === "web" ? null : "/shots",
+          tabBarLabelPosition: "below-icon",
+          tabBarLabel: ({ focused, color }) => (
+            <ThemedText
+              style={{
+                color,
+                fontSize: 14,
+                fontWeight: "bold",
+              }}
+            >
+              Shorts
+            </ThemedText>
+          ),
+          tabBarIcon: ({ color, focused }) => (
+            <TabBarIcon
+              name={focused ? "videocam-sharp" : "videocam-outline"}
+              color={color}
+            />
+          ),
+          animation: "shift",
+        }}
+      />
+      <Tabs.Screen
         name="notifications"
         options={{
-          href: Platform.OS === 'web' ? null : "/notifications",
+          href: Platform.OS === "web" ? null : "/notifications",
           tabBarLabelPosition: "below-icon",
           tabBarLabel: ({ focused, color }) => (
             <ThemedText
