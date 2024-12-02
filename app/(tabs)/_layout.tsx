@@ -6,6 +6,7 @@ import { Colors } from "@/constants/Colors";
 import { useColorScheme } from "@/hooks/useColorScheme";
 import { ThemedText } from "@/components/ThemedText";
 import { Platform } from "react-native";
+import { LinearGradient } from "expo-linear-gradient";
 
 export default function TabLayout() {
   const colorScheme = useColorScheme() || "light";
@@ -13,15 +14,17 @@ export default function TabLayout() {
   return (
     <Tabs
       screenOptions={{
-        // tabBarActiveTintColor: Colors[colorScheme].tint || "#ffa500",
-        // tabBarActiveTintColor: "#ffa500",
-        tabBarActiveTintColor: "#232b5d",
+        // tabBarActiveTintColor: "#232b5d",
+        tabBarInactiveTintColor: '#fff',
+        tabBarActiveTintColor: "#fff",
         headerShown: false,
         tabBarStyle: {
           height: Platform.OS === "ios" ? 78 : 65,
           paddingTop: 10,
-          // backgroundColor: "#232b5d",
+          backgroundColor: "#232b5d",
           borderTopLeftRadius: 20,
+          borderTopRightRadius: 20,
+          borderTopWidth: 0,
         },
       }}
     >
