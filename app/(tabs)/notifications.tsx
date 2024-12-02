@@ -86,6 +86,10 @@ const Notifications = () => {
         }
         start={{ x: 0, y: 0 }} // Start from the left
         end={{ x: 1, y: 0 }} // End at the right
+        style={{
+          borderBottomLeftRadius: 20,
+          borderBottomRightRadius: 20,
+        }}
       >
         <View>
           <Text
