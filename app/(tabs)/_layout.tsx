@@ -14,14 +14,13 @@ export default function TabLayout() {
   return (
     <Tabs
       screenOptions={{
-        // tabBarActiveTintColor: "#232b5d",
-        tabBarInactiveTintColor: '#fff',
+        tabBarInactiveTintColor: "#fff",
         tabBarActiveTintColor: "#fff",
         headerShown: false,
         tabBarStyle: {
           height: Platform.OS === "ios" ? 78 : 65,
           paddingTop: 10,
-          backgroundColor: "#232b5d",
+          backgroundColor: "transparent",
           borderTopLeftRadius: 20,
           borderTopRightRadius: 20,
           borderTopWidth: 0,
@@ -31,6 +30,20 @@ export default function TabLayout() {
       <Tabs.Screen
         name="index"
         options={{
+          tabBarBackground() {
+            return (
+              <LinearGradient
+                colors={["#232b5d", "#233b9d"]}
+                start={{ x: 0, y: 0 }} // Start from the left
+                end={{ x: 1, y: 0 }} // End at the right
+                style={{
+                  flex: 1,
+                  borderTopLeftRadius: 20,
+                  borderTopRightRadius: 20,
+                }}
+              />
+            );
+          },
           tabBarLabelPosition: "below-icon",
           tabBarLabel: ({ focused, color }) => (
             <ThemedText
@@ -55,6 +68,20 @@ export default function TabLayout() {
       <Tabs.Screen
         name="portfolio"
         options={{
+          tabBarBackground() {
+            return (
+              <LinearGradient
+                colors={["#232b5d", "#233b9d"]}
+                start={{ x: 0, y: 0 }} // Start from the left
+                end={{ x: 1, y: 0 }} // End at the right
+                style={{
+                  flex: 1,
+                  borderTopLeftRadius: 20,
+                  borderTopRightRadius: 20,
+                }}
+              />
+            );
+          },
           tabBarLabelPosition: "below-icon",
           tabBarLabel: ({ focused, color }) => (
             <ThemedText
@@ -80,6 +107,20 @@ export default function TabLayout() {
         name="shorts"
         options={{
           // href: Platform.OS === "web" ? null : "/shots",
+          tabBarBackground() {
+            return (
+              <LinearGradient
+                colors={["#232b5d", "#233b9d"]}
+                start={{ x: 0, y: 0 }} // Start from the left
+                end={{ x: 1, y: 0 }} // End at the right
+                style={{
+                  flex: 1,
+                  borderTopLeftRadius: 20,
+                  borderTopRightRadius: 20,
+                }}
+              />
+            );
+          },
           tabBarLabelPosition: "below-icon",
           tabBarLabel: ({ focused, color }) => (
             <ThemedText
@@ -105,6 +146,20 @@ export default function TabLayout() {
         name="notifications"
         options={{
           href: Platform.OS === "web" ? null : "/notifications",
+          tabBarBackground() {
+            return (
+              <LinearGradient
+                colors={["#232b5d", "#233b9d"]}
+                start={{ x: 0, y: 0 }} // Start from the left
+                end={{ x: 1, y: 0 }} // End at the right
+                style={{
+                  flex: 1,
+                  borderTopLeftRadius: 20,
+                  borderTopRightRadius: 20,
+                }}
+              />
+            );
+          },
           tabBarLabelPosition: "below-icon",
           tabBarLabel: ({ focused, color }) => (
             <ThemedText
