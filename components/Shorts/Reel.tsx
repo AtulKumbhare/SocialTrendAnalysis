@@ -1,122 +1,4 @@
-// import React, { useState, useRef } from "react";
-// import { View, StyleSheet, FlatList, Dimensions } from "react-native";
-// import Video from "react-native-video";
-
-// const { height } = Dimensions.get("window");
-
-// const Reels = () => {
-//   const [currentIndex, setCurrentIndex] = useState(0);
-//   const flatListRef = useRef(null);
-
-//   const handleViewableItemsChanged = ({ viewableItems }: any) => {
-//     if (viewableItems.length > 0) {
-//       setCurrentIndex(viewableItems[0].index);
-//     }
-//   };
-
-//   const viewabilityConfig = {
-//     itemVisiblePercentThreshold: 80, // Trigger when 80% of the item is visible
-//   };
-
-//   const renderItem = ({ item, index }: any) => (
-//     <View style={styles.videoContainer}>
-//       <Video
-//         source={{ uri: item.url }}
-//         style={styles.video}
-//         resizeMode="cover"
-//         repeat
-//         paused={index !== currentIndex} // Pause videos that are not visible
-//       />
-//     </View>
-//   );
-
-//     const videos = [
-//       {
-//         id: "001",
-//         url: require("../../assets/videos/1.mp4"),
-//       },
-//       {
-//         id: "002",
-//         url: require("../../assets/videos/2.mp4"),
-//       },
-//       {
-//         id: "003",
-//         url: require("../../assets/videos/3.mp4"),
-//       },
-//       {
-//         id: "004",
-//         url: require("../../assets/videos/4.mp4"),
-//       },
-//       {
-//         id: "005",
-//         url: require("../../assets/videos/5.mp4"),
-//       },
-//       {
-//         id: "006",
-//         url: require("../../assets/videos/6.mp4"),
-//       },
-//     ];
-
-//   return (
-//     <FlatList
-//       data={videos}
-//       renderItem={renderItem}
-//       keyExtractor={(item, index) => index.toString()}
-//       pagingEnabled
-//       horizontal={false}
-//       showsVerticalScrollIndicator={false}
-//       snapToInterval={height} // Snap each item to the full screen height
-//       snapToAlignment="start"
-//       decelerationRate="fast"
-//       onViewableItemsChanged={handleViewableItemsChanged}
-//       viewabilityConfig={viewabilityConfig}
-//       ref={flatListRef}
-//     />
-//   );
-// };
-
-// const styles = StyleSheet.create({
-//   videoContainer: {
-//     height: height,
-//     justifyContent: "center",
-//     alignItems: "center",
-//   },
-//   video: {
-//     width: "100%",
-//     height: "100%",
-//   },
-// });
-
-// export default Reels;
-
-// const videoData = [
-//   {
-//     id: "001",
-//     url: require("../../assets/videos/1.mp4"),
-//   },
-//   {
-//     id: "002",
-//     url: require("../../assets/videos/2.mp4"),
-//   },
-//   {
-//     id: "003",
-//     url: require("../../assets/videos/3.mp4"),
-//   },
-//   {
-//     id: "004",
-//     url: require("../../assets/videos/4.mp4"),
-//   },
-//   {
-//     id: "005",
-//     url: require("../../assets/videos/5.mp4"),
-//   },
-//   {
-//     id: "006",
-//     url: require("../../assets/videos/6.mp4"),
-//   },
-// ];
-
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import {
   View,
   StyleSheet,
@@ -141,7 +23,9 @@ const VideoReels = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const flatListRef = useRef(null);
 
-  const handleViewableItemsChanged = ({ viewableItems }: any) => {
+  const handleViewableItemsChanged = ({ viewableItems, changed }: any) => {
+    console.log("Viewable items changed:", viewableItems[0]);
+    console.log("changed:", changed);
     if (viewableItems.length > 0) {
       setCurrentIndex(viewableItems[0].index);
     }
@@ -210,9 +94,13 @@ const VideoReels = () => {
 };
 
 const VideoPlayerComponent = ({ url, isPlaying }: any) => {
-  const [position, setPosition] = useState(0); // Current playback position in ms
-  const [duration, setDuration] = useState(0); // Total video duration in ms
-  const [isSeeking, setIsSeeking] = useState(false); // Whether the user is dragging the slider
+  // const [position, setPosition] = useState(0); // Current playback position in ms
+  // const [duration, setDuration] = useState(0); // Total video duration in ms
+  // const [isSeeking, setIsSeeking] = useState(false); // Whether the user is dragging the slider
+
+  const [isVisible, setIsVisible] = useState(false); // Track if video is in view
+  const videoRef = useRef(null); // For web-specific handling
+
   const [showPlayIcon, setShowPlayIcon] = useState(false);
   const player = useVideoPlayer(url, (player) => {
     player.loop = true;
@@ -222,14 +110,31 @@ const VideoPlayerComponent = ({ url, isPlaying }: any) => {
 
   // Handle play/pause based on the `isPlaying` prop
   React.useEffect(() => {
-    if (isPlaying) {
+    if (isPlaying || isVisible) {
       player.play();
       setShowPlayIcon(false);
     } else {
       player.pause();
       setShowPlayIcon(true);
     }
-  }, [isPlaying, player]);
+  }, [isPlaying, player, isVisible]);
+
+  useEffect(() => {
+    if (Platform.OS === "web" && videoRef.current) {
+      const observer = new IntersectionObserver(
+        ([entry]) => {
+          if (entry.isIntersecting) {
+            setIsVisible(true);
+          } else {
+            setIsVisible(false);
+          }
+        },
+        { threshold: 0.5 } // Trigger when 50% of the video is visible
+      );
+      observer.observe(videoRef.current);
+      return () => observer.disconnect();
+    }
+  }, []);
 
   const handleLike = () => {
     console.log("Liked!");
@@ -257,15 +162,18 @@ const VideoPlayerComponent = ({ url, isPlaying }: any) => {
     }
   };
 
-  const handleSeek = (value: number) => {
-    setPosition(value);
-    player.seekBy(value);
-  };
+  // const handleSeek = (value: number) => {
+  //   setPosition(value);
+  //   player.seekBy(value);
+  // };
 
   return (
     <GestureHandlerRootView style={styles.container}>
       <TapGestureHandler onEnded={handleTap}>
-        <View style={styles.videoContainer}>
+        <View
+          style={styles.videoContainer}
+          ref={Platform.OS === "web" ? videoRef : undefined}
+        >
           <VideoView
             player={player}
             style={styles.video}
