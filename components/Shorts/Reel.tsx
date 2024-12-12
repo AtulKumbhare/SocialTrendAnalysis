@@ -23,9 +23,7 @@ const VideoReels = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const flatListRef = useRef(null);
 
-  const handleViewableItemsChanged = ({ viewableItems, changed }: any) => {
-    console.log("Viewable items changed:", viewableItems[0]);
-    console.log("changed:", changed);
+  const handleViewableItemsChanged = ({ viewableItems }: any) => {
     if (viewableItems.length > 0) {
       setCurrentIndex(viewableItems[0].index);
     }
