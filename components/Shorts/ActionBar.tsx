@@ -62,7 +62,7 @@ const styles = StyleSheet.create({
   container: {
     position: "absolute",
     right: Platform.OS === "web" ? width / 3.2 : 10,
-    bottom: Platform.OS === "web" ? 100 : 120,
+    bottom: Platform.OS === "ios" ? 120 : 50,
     alignItems: "center",
     justifyContent: "space-around",
     height: 200,

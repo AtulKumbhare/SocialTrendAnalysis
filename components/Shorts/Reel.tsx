@@ -239,7 +239,7 @@ const styles = StyleSheet.create({
     backgroundColor: "black",
   },
   videoContainer: {
-    height: Platform.OS === "web" ? height - 65 : height,
+    height: height - 65,
     justifyContent: "center",
     alignItems: "center",
     position: "relative",
