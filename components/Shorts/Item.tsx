@@ -52,7 +52,8 @@ function ShortItem({ visible, playing, url, layout }: ShortItemProps) {
       width={layout.width}
       videoId={youtubeId}
       play={playing}
-      {...(Platform.OS === "ios" ? { key: webviewKey } : {})}
+      key={webviewKey}
+      // {...(Platform.OS === "ios" ? { key: webviewKey } : {})}
       onChangeState={(event) => {
         if (event === "ended" && visible) {
           youtubePlayerRef?.current?.seekTo(0, true);
@@ -60,11 +61,13 @@ function ShortItem({ visible, playing, url, layout }: ShortItemProps) {
       }}
       webViewProps={{
         // javaScriptEnabled: Platform.OS === "ios" ? true : false,
+        javaScriptEnabled: true,
         injectedJavaScript: `
           var element = document.getElementsByClassName('container')[0];
           element.style.position = 'unset';
           true;
         `,
+        pointerEvents: "box-none",
       }}
     />
   );

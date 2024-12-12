@@ -1,3 +1,4 @@
+import React from "react";
 import { useEvent } from "expo";
 // import { useVideoPlayer, VideoView } from "expo-video";
 import { useCallback, useRef, useState } from "react";
@@ -14,6 +15,7 @@ import { Button, Text } from "react-native-paper";
 import YoutubePlayer from "react-native-youtube-iframe";
 import { WebView } from "react-native-webview";
 import Shorts from "@/components/Shorts";
+import Reels from "@/components/Shorts/Reel";
 const Shots = () => {
 
   const items = [
@@ -43,8 +45,13 @@ const Shots = () => {
     },
   ];
   return (
-    <View style={{ flex: 1, alignSelf: 'stretch'}}>
-      <Shorts items={items} />
+    <View style={{
+      flex: 1,
+      // alignSelf: 'stretch',
+      backgroundColor: "#000"
+    }}>
+      {/* <Shorts items={items} /> */}
+      <Reels />
     </View>
   );
 };

@@ -64,6 +64,7 @@ function Shorts<T>(props: ShortsProps<T>): JSX.Element {
         onRefresh={() => onRefresh?.()}
         onEndReached={onEndReached}
         decelerationRate="fast"
+        bounces={true}
         renderItem={useCallback(
           ({ item, index }: { item: Item<T>; index: number }) => {
             return (

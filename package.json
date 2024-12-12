@@ -16,7 +16,7 @@
   },
   "dependencies": {
     "@dooboo/react-native-youtube-iframe": "^2.2.5",
-    "@expo/vector-icons": "^14.0.2",
+    "@expo/vector-icons": "^14.0.4",
     "@react-navigation/native": "^6.0.2",
     "date-fns": "^4.1.0",
     "expo": "^52.0.6",
@@ -29,6 +29,7 @@
     "expo-splash-screen": "~0.29.9",
     "expo-status-bar": "~2.0.0",
     "expo-system-ui": "~4.0.2",
+    "expo-video": "~2.0.2",
     "expo-web-browser": "~14.0.1",
     "nativewind": "^4.1.23",
     "react": "18.3.1",
