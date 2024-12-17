@@ -225,7 +225,6 @@ const VideoReels = () => {
     setComments([newComment, ...comments]);
     setCommentText("");
   };
-  console.log(comments);
   return (
     <GestureHandlerRootView style={styles.container}>
       <FlatList
@@ -338,7 +337,7 @@ const VideoReels = () => {
                     <View
                       style={{
                         width: "100%",
-                        flex: 1,
+                        // flex: 1,
                         paddingLeft: 30,
                         marginVertical: 0,
                       }}
@@ -425,6 +424,95 @@ const VideoReels = () => {
                           </TouchableOpacity>
                         )}
                       />
+                      {reply.replies.length > 0 &&
+                        reply.replies.map((replyOfReply) => (
+                          <View
+                            style={{
+                              width: "100%",
+                              flex: 1,
+                              paddingLeft: 30,
+                            }}
+                          >
+                            <List.Item
+                              key={replyOfReply.id}
+                              title={
+                                <View className="flex flex-row items-center">
+                                  <Text className="text-white">
+                                    {replyOfReply.username}
+                                  </Text>
+                                  <Text
+                                    className="text-white"
+                                    style={{ marginLeft: 16, fontSize: 10 }}
+                                  >
+                                    {getDateString(
+                                      new Date(replyOfReply.timestamp)
+                                    )}
+                                  </Text>
+                                </View>
+                              }
+                              description={
+                                <View className="flex flex-col items-start">
+                                  <Text className="text-white">
+                                    {replyOfReply.text}
+                                  </Text>
+                                </View>
+                              }
+                              titleNumberOfLines={4}
+                              style={{
+                                paddingVertical: 0,
+                                marginVertical: 0,
+                                paddingHorizontal: 16,
+                                flex: 1,
+                                width: "100%",
+                                alignItems: "center",
+                                justifyContent: "center",
+                              }}
+                              contentStyle={{
+                                padding: 0,
+                                marginLeft: 8,
+                                marginVertical: 0,
+                                justifyContent: "center",
+                              }}
+                              titleStyle={{ fontSize: 14, color: "white" }}
+                              descriptionStyle={{
+                                color: `#fff`,
+                                fontSize: 13,
+                                marginTop: 4,
+                              }}
+                              left={(props) => (
+                                <Image
+                                  style={{
+                                    width: 20,
+                                    height: 20,
+                                    borderRadius: 10,
+                                  }}
+                                  source={reply.avatarUrl as ImageURISource}
+                                />
+                              )}
+                              // right={(props) => (
+                              //   <TouchableOpacity
+                              //     style={styles.actionButton}
+                              //     onPress={() =>
+                              //       handleReplyLike(comment, reply)
+                              //     }
+                              //   >
+                              //     <Ionicons
+                              //       name={
+                              //         reply.isLiked
+                              //           ? "heart-sharp"
+                              //           : "heart-outline"
+                              //       }
+                              //       size={15}
+                              //       color={reply.isLiked ? "red" : "white"}
+                              //     />
+                              //     <Text style={styles.actionText}>
+                              //       {reply.likes}
+                              //     </Text>
+                              //   </TouchableOpacity>
+                              // )}
+                            />
+                          </View>
+                        ))}
                     </View>
                   ))}
               </View>
