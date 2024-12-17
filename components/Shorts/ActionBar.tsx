@@ -8,10 +8,16 @@ import {
   Platform,
   Dimensions,
 } from "react-native";
-import { Ionicons, MaterialIcons, FontAwesome5 } from "@expo/vector-icons";
+import {
+  Ionicons,
+  MaterialIcons,
+  FontAwesome5,
+  Feather,
+} from "@expo/vector-icons";
 
 type ActionBarProps = {
   likes: number;
+  isLiked: boolean;
   comments: number;
   onLike: () => void;
   onComment: () => void;
@@ -22,6 +28,7 @@ const { width } = Dimensions.get("window");
 
 const ActionBar = ({
   likes = 0,
+  isLiked = false,
   comments = 0,
   onLike,
   onComment,
@@ -32,14 +39,16 @@ const ActionBar = ({
     <View style={styles.container}>
       {/* Like Button */}
       <TouchableOpacity style={styles.actionButton} onPress={onLike}>
-        {/* <Ionicons name="heart-outline" size={32} color="white" /> */}
-        <FontAwesome5 name="heart" size={24} color="white" />
+        <Ionicons
+          name={isLiked ? "heart-sharp" : "heart-outline"}
+          size={26}
+          color={isLiked ? "red" : "white"}
+        />
         <Text style={styles.actionText}>{likes}</Text>
       </TouchableOpacity>
 
       {/* Comment Button */}
       <TouchableOpacity style={styles.actionButton} onPress={onComment}>
-        {/* <FontAwesome5 name="comment-alt" size={24} color="white" /> */}
         <Ionicons name="chatbubble-outline" size={24} color="white" />
         <Text style={styles.actionText}>{comments}</Text>
       </TouchableOpacity>
@@ -47,7 +56,7 @@ const ActionBar = ({
       {/* Share Button */}
       <TouchableOpacity style={styles.actionButton} onPress={onShare}>
         <MaterialIcons name="share" size={24} color="white" />
-        {/* <Text style={styles.actionText}>Share</Text> */}
+        {/* <Feather name="send" size={24} color="white" /> */}
       </TouchableOpacity>
 
       {/* More Button */}
@@ -62,7 +71,7 @@ const styles = StyleSheet.create({
   container: {
     position: "absolute",
     right: Platform.OS === "web" ? width / 3.2 : 10,
-    bottom: Platform.OS === "ios" ? 120 : 50,
+    bottom: Platform.OS === "ios" || Platform.OS === "android" ? 120 : 50,
     alignItems: "center",
     justifyContent: "space-around",
     height: 200,
