@@ -85,6 +85,7 @@ const VideoReels = () => {
     // Move Player setup to a custom component to avoid breaking Rules of Hooks
     return (
       <VideoPlayerComponent
+        key={item.id}
         url={item.url}
         isPlaying={index === currentIndex}
         handleClosePress={handleClosePress}
@@ -335,15 +336,14 @@ const VideoReels = () => {
                 {comment.replies.length > 0 &&
                   comment.replies.map((reply) => (
                     <View
+                      key={reply.id}
                       style={{
                         width: "100%",
-                        // flex: 1,
                         paddingLeft: 30,
                         marginVertical: 0,
                       }}
                     >
                       <List.Item
-                        key={reply.id}
                         title={
                           <View className="flex flex-row items-center">
                             <Text className="text-white">{reply.username}</Text>
@@ -368,11 +368,6 @@ const VideoReels = () => {
                               }}
                             >
                               <Text style={styles.actionText}>Reply</Text>
-                              <View>
-                                {comment.replies.length > 0 && (
-                                  <Text style={styles.actionText}></Text>
-                                )}
-                              </View>
                             </TouchableOpacity>
                           </View>
                         }
@@ -673,7 +668,7 @@ const VideoPlayerComponent = ({
               />
             </View>
           ) : (
-            ""
+            null
           )}
         </View>
       </TapGestureHandler>
