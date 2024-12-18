@@ -159,7 +159,7 @@ const Notifications = () => {
                             style={{
                               width: 8,
                               height: 8,
-                              borderRadius: "50%",
+                              borderRadius: 4,
                               backgroundColor: Colors.light.tint,
                             }}
                           />

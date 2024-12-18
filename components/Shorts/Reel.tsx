@@ -280,7 +280,7 @@ const VideoReels = () => {
                   }
                   description={
                     <View className="flex flex-col items-start">
-                      <Text className="text-white">{comment.text}</Text>
+                      <Text className="text-white flex-1" style={{flexWrap: "wrap"}}>{comment.text}</Text>
                       <TouchableOpacity
                         className="mt-2"
                         onPress={() => {
